@@ -15,7 +15,13 @@ The questions from your notes today are below, please copy your answers them her
 
 1. Write your own function that takes the temperature in Fahrenheit as an argument and returns the Celcius equivalent. 
 
-```{R}
+```{r convert_celcius}
+
+convert_celcius <- function(fahrenheit){
+  c <- (fahrenheit - 32) * 5/9
+  c
+}
+celcius = convert_celcius(212)
 
 
 ```
@@ -23,7 +29,15 @@ The questions from your notes today are below, please copy your answers them her
 2. Expand that function so that it takes a temperature in Fahrenheit and a distance in feet and returns **both** the temperature in Celcius and the distance in meters (you'll likely need to remember the `c()` function!)
 
 
-```{r}
+```{r convert_celcius_meter}
+
+convert_celcius_meter <- function(fahrenheit, feet){
+  ce <- (fahrenheit - 32) * 5/9
+  me <- (feet * 0.3048)
+  out <- c(ce,me)
+  out
+}
+celcius_meter = convert_celcius_meter(212, 1)
 
 
 ```
@@ -31,25 +45,56 @@ The questions from your notes today are below, please copy your answers them her
 
 3. Write a function that prints out a statement of whether the number passed as an argument is positive, negative or 0. 
 
-```{R}
+```{r test_positive}
 
+is_positive <- function(num){
+  if (num > 0) {
+    print("Number is positive")
+  } else {
+    print("Number is not positive.")
+  }
+}
+
+is_positive(-2)
 
 ```
 
 4. Write a function that returns the absolute value of the number passed as an argument.
    + Don't use `abs()`. Use the flow from problem 1 and multiply by negative one as necessary. 
    
-```{r}
+```{r absolutely}
 
+absolutely <- function(num){
+  if (num > 0) {
+    ret <- num
+  } else {
+    ret <- num * -1
+  }
+  ret
+}
+
+a <- absolutely(-3)
 
 ```
 
 5. Hard mode: add an error check to that function that prints out the string "Please pass a numerical value to this function" if the user passes the function a string. 
    + There are functions that check and return T/F: `is.numeric()` or `is.character()` would be relevant here
    
-```{r}
+```{r absolutely_checked}
 
+absolutely_checked <- function(num){
+  if (is.character(num)) {
+    print("Please pass a numerical value.")
+    ret <- 0
+  } else if (num > 0) {
+    ret <- num
+  } else{
+    ret <- num * -1
+  }
+  ret
+}
 
+a <- absolutely_checked("x")
 
 ```
    
